@@ -6,8 +6,8 @@ public class PharmacyDTO {
     private String name;
     private String address;
     private String phone;
-    private Long latitud;
-    private Long longitud;
+    private String latitud;
+    private String longitud;
 
 
     public String getName() {
@@ -34,19 +34,19 @@ public class PharmacyDTO {
         this.phone = phone;
     }
 
-    public Long getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Long latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public Long getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Long longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 }

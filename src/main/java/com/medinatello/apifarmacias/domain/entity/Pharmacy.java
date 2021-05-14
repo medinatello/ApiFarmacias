@@ -2,10 +2,8 @@ package com.medinatello.apifarmacias.domain.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
-import java.util.Calendar;
 
 @Entity(name = "Pharmacy")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -13,41 +11,38 @@ public class Pharmacy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Double id;
 
-    @Column(insertable = true, updatable = false, nullable = true)
-    @Temporal(TemporalType.DATE)
-    private Calendar fecha;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long local_id;
+    private String fecha;
+    private Double local_id;
     private String local_nombre;
     private String comuna_nombre;
     private String localidad_nombre;
     private String local_direccion;
-    private Calendar funcionamiento_hora_apertura;
-    private Calendar funcionamiento_hora_cierre;
+    private String funcionamiento_hora_apertura;
+    private String funcionamiento_hora_cierre;
     private String local_telefono;
     private String local_lat;
-    private Long local_lng;
-    private Long funcionamiento_dia;
+    private String local_lng;
+    private String funcionamiento_dia;
     private Integer fk_region;
     private Integer fk_comuna;
 
-    public void setId(Long id) {
+    public void setId(Double id) {
         this.id = id;
     }
 
 
-    public Long getId() {
+    public Double getId() {
         return id;
     }
 
-    public Long getLocal_id() {
+    public Double getLocal_id() {
         return local_id;
     }
 
-    public void setLocal_id(Long local_id) {
+    public void setLocal_id(Double local_id) {
         this.local_id = local_id;
     }
 
@@ -83,19 +78,19 @@ public class Pharmacy {
         this.local_direccion = local_direccion;
     }
 
-    public Calendar getFuncionamiento_hora_apertura() {
+    public String getFuncionamiento_hora_apertura() {
         return funcionamiento_hora_apertura;
     }
 
-    public void setFuncionamiento_hora_apertura(Calendar funcionamiento_hora_apertura) {
+    public void setFuncionamiento_hora_apertura(String funcionamiento_hora_apertura) {
         this.funcionamiento_hora_apertura = funcionamiento_hora_apertura;
     }
 
-    public Calendar getFuncionamiento_hora_cierre() {
+    public String getFuncionamiento_hora_cierre() {
         return funcionamiento_hora_cierre;
     }
 
-    public void setFuncionamiento_hora_cierre(Calendar funcionamiento_hora_cierre) {
+    public void setFuncionamiento_hora_cierre(String funcionamiento_hora_cierre) {
         this.funcionamiento_hora_cierre = funcionamiento_hora_cierre;
     }
 
@@ -115,19 +110,19 @@ public class Pharmacy {
         this.local_lat = local_lat;
     }
 
-    public Long getLocal_lng() {
+    public String getLocal_lng() {
         return local_lng;
     }
 
-    public void setLocal_lng(Long local_lng) {
+    public void setLocal_lng(String local_lng) {
         this.local_lng = local_lng;
     }
 
-    public Long getFuncionamiento_dia() {
+    public String getFuncionamiento_dia() {
         return funcionamiento_dia;
     }
 
-    public void setFuncionamiento_dia(Long funcionamiento_dia) {
+    public void setFuncionamiento_dia(String funcionamiento_dia) {
         this.funcionamiento_dia = funcionamiento_dia;
     }
 
@@ -147,11 +142,11 @@ public class Pharmacy {
         this.fk_comuna = fk_comuna;
     }
 
-    public Calendar getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }
