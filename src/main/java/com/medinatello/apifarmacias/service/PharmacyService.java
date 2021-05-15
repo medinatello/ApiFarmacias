@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Farmacias Servicios
@@ -22,13 +23,16 @@ public class PharmacyService {
     @Autowired
     private PharmacyRestDAO pharmacyRestDAO;
 
-    public List<PharmacyDTO> getPharmacies(){
+    public List<PharmacyDTO> getPharmacies(String comuna){
 
         List<PharmacyDTO> output = new ArrayList<>();
 
         var pharmacies = pharmacyRestDAO.getPharmacy();
         if(pharmacies == null || pharmacies.stream().count() == 0){
             return output;
+        }
+        if(comuna.length()>0){
+            pharmacies = pharmacies.stream().filter(f -> f.getComuna_nombre().toUpperCase().equals(comuna)).collect(Collectors.toList());
         }
 
         pharmacies.stream().forEach( f -> {
