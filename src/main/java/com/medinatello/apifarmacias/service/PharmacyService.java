@@ -1,6 +1,7 @@
 package com.medinatello.apifarmacias.service;
 
 
+import com.medinatello.apifarmacias.dao.PharmacyRepo;
 import com.medinatello.apifarmacias.dao.rest.PharmacyRestDAO;
 import com.medinatello.apifarmacias.domain.entity.Pharmacy;
 import com.medinatello.apifarmacias.dto.PharmacyDTO;
@@ -20,16 +21,23 @@ import java.util.stream.Collectors;
 public class PharmacyService {
 
     private Logger logger = LoggerFactory.getLogger(PharmacyService.class);
+
     @Autowired
-    private PharmacyRestDAO pharmacyRestDAO;
+    private PharmacyRepo pharmacyRepo;
 
     public List<PharmacyDTO> getPharmacies(String comuna){
 
         List<PharmacyDTO> output = new ArrayList<>();
+        List<Pharmacy> pharmacies = null;
+        if(comuna.length() == 0){
+            pharmacies = pharmacyRepo.getAll();
+        }else {
+            pharmacies = pharmacyRepo.getAllByComunas(comuna.toUpperCase());
+        }
 
-        var pharmacies = pharmacyRestDAO.getPharmacy();
+
         if(pharmacies == null || pharmacies.stream().count() == 0){
-            return output;
+            return null;
         }
         if(comuna.length()>0){
             pharmacies = pharmacies.stream().filter(f -> f.getComuna_nombre().toUpperCase().equals(comuna)).collect(Collectors.toList());
@@ -43,19 +51,6 @@ public class PharmacyService {
 
     }
 
-
-    public List<PharmacyDTO> getPharmacyMock(){
-        List<PharmacyDTO> output = new ArrayList<>();
-        PharmacyDTO pharmacyDTO = new PharmacyDTO();
-        pharmacyDTO.setName("Prueba");
-        pharmacyDTO.setAddress("Santiago 12 12");
-        pharmacyDTO.setPhone("956772323");
-
-
-        output.add(pharmacyDTO);
-        return output;
-
-    }
 
     private PharmacyDTO toPharmacyDTO(Pharmacy pharmacy){
 
