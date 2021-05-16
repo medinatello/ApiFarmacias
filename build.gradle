@@ -4,6 +4,12 @@ plugins {
     id 'java'
 }
 
+
+task(runMain, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.medinatello.apifarmacias.ApiFarmaciasApplication'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 group = 'com.medinatello'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
