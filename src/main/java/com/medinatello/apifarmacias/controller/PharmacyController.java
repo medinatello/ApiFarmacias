@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,16 +49,19 @@ public class PharmacyController {
         List<PharmacyDTO> output = new ArrayList<>();
         try{
             output = pharmacyService.getPharmacies(_comuna);
-            if(output == null){
+            if(output == null) {
                 code = HttpStatus.INTERNAL_SERVER_ERROR;
-            }
-            if(output.stream().count() == 0){
+                logger.info("get pharmacy internal error");
+            } else if(output.stream().count() == 0){
                 code = HttpStatus.NOT_FOUND;
+                logger.info("get pharmacy not found");
+            } else {
+                logger.info(MessageFormat.format("get pharmacy count {0}", output.stream().count()));
             }
 
 
         }catch (Exception e){
-            logger.error("Error en controlador", e);
+            logger.error("Error in controlador", e);
             code = HttpStatus.INTERNAL_SERVER_ERROR;
 
         }

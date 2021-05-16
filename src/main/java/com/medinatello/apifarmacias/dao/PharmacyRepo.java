@@ -82,6 +82,7 @@ public class PharmacyRepo {
             if(!addRange(pharmacies)){
                 return false;
             }
+            logger.info("Primera carga de datos realizada");
         }
 
         return true;
