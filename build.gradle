@@ -4,6 +4,12 @@ plugins {
     id 'java'
 }
 
+
+task(runMain, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.medinatello.apifarmacias.ApiFarmaciasApplication'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 group = 'com.medinatello'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -19,6 +25,8 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api'
     implementation 'org.glassfish.jaxb:jaxb-runtime'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.8'
+
     runtimeOnly 'com.h2database:h2'
 
     compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'

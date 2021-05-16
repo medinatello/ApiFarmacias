@@ -28,6 +28,9 @@ public class PharmacyController {
 
     private Logger logger = LoggerFactory.getLogger(PharmacyController.class);
 
+    public PharmacyController(PharmacyService service){
+        this.pharmacyService = service;
+    }
 
     @GetMapping("/ping")
     public ResponseEntity<String> ping() {
