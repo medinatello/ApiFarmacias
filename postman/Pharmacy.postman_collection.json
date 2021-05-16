@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "d3cf8d10-c3bc-4840-a25f-c28cbfe027f5",
+		"name": "Pharmacy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pharmacy/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pharmacy",
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/pharmacy/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pharmacy",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll Comuna",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/pharmacy/?comuna=ñuñoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pharmacy",
+						""
+					],
+					"query": [
+						{
+							"key": "comuna",
+							"value": "ñuñoa"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
