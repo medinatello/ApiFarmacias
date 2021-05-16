@@ -11,11 +11,11 @@ public class Pharmacy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Double id;
+    private Long id;
 
 
     private String fecha;
-    private Double local_id;
+    private Long local_id;
     private String local_nombre;
     private String comuna_nombre;
     private String localidad_nombre;
@@ -29,20 +29,20 @@ public class Pharmacy {
     private Integer fk_region;
     private Integer fk_comuna;
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
 
-    public Double getId() {
+    public Long getId() {
         return id;
     }
 
-    public Double getLocal_id() {
+    public Long getLocal_id() {
         return local_id;
     }
 
-    public void setLocal_id(Double local_id) {
+    public void setLocal_id(Long local_id) {
         this.local_id = local_id;
     }
 
